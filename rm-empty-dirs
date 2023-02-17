@@ -1,0 +1,3 @@
+#!/bin/bash
+arg=storage
+find $arg -type d -empty -delete

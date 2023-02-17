@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# https://linuxconfig.org/bash-script-yes-no-prompt-example
+read -p "Do you really want to proceed? (yes/no) " yn
+
+case $yn in 
+	yes ) echo ;;
+	no ) echo exiting...;
+		exit;;
+	* ) echo invalid response;
+		exit 1;;
+esac
+
+echo 'Copy ./storage to /storage'
+rsync -avhu ./storage/ /storage/ # https://unix.stackexchange.com/a/259738
+
+echo 'Append new music paths to primary playlist'
+plfile=/home/kur/.config/cmus/playlists/0all.m3u8
+./tree-mpaths >> $plfile

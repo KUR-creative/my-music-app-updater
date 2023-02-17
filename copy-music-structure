@@ -1,0 +1,3 @@
+#!/bin/bash
+here=$PWD
+tree -dfi --noreport /storage/emulated/0/Music | xargs -I{} mkdir -p "$here/{}"
